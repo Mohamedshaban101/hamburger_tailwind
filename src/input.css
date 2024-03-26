@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    *{
+        @apply box-border
+    }
+    html{
+        @apply scroll-smooth
+    }
+    body{
+        @apply text-whiteColor bg-primaryColor tracking-wider dark:bg-blackColor
+    }
+    section{
+        @apply pt-16 pb-4 md:pt-20
+    }
+}
+
+@layer components {
+    .btn {
+        @apply  py-3 px-8 inline-block rounded-md text-sm  ease-in-out duration-200 cursor-pointer capitalize
+    }
+    .btn-primary{
+        @apply text-black hover:opacity-75 bg-secondaryColor
+    }
+    .footer-title{
+        @apply font-bold uppercase mb-1 text-lg
+    }
+    .footer-list-item{
+        @apply text-xs mb-2 hover:text-secondaryColor ease-linear duration-200
+    }
+    .footer-icon{
+        @apply text-sm text-secondaryColor
+    }
+    a.active{
+        @apply text-secondaryColor;
+    }
+}
+
+@layer utilities{
+    .separator{
+        @apply w-32 h-[2px] bg-secondaryColor my-3;
+    }
+}
+
+.tabs_wrap ul li:hover,
+.tabs_wrap ul li.active{
+    @apply bg-secondaryColor text-darkColor;
+}
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    min-height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #010a5e;
+    z-index: 100000;
+}
+.loader-hidden{
+    visibility: hidden;
+    opacity: 0;
+}
+.loader{
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+.loader span{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* background-color: red; */
+    transform: rotate(calc(18deg * var(--i)));
+}
+.loader span::before{
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    left: 0;
+    background-color: #ffcc00;
+    border-radius: 50%;
+    animation: animate 2s linear infinite;
+    animation-delay: calc(.1s * var(--i));
+    box-shadow: 0 0 10px #ffcc00,
+                0 0 20 #ffcc00,
+                0 0 40 #ffcc00,
+                0 0 60 #ffcc00,
+                0 0 80 #ffcc00,
+                0 0 100 #ffcc00;
+}
+@keyframes animate{
+    0%{
+        transform: scale(1);
+    }
+    80%,100%{
+        transform: scale(0);
+    }
+}
